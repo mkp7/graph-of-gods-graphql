@@ -7,33 +7,24 @@ const graphOfGods = {
     name: 'jupiter',
     age: 5000,
     type: 'god',
-    lives: function () { return this.sky },
-    father: function () { return this.saturn },
-    brothers: [
-      function () { return this.neptune },
-      function () { return this.pluto }
-    ]
+    lives: function () { return graphOfGods.sky },
+    father: function () { return graphOfGods.saturn },
+    brothers: function () { return [graphOfGods.neptune, graphOfGods.pluto] },
   },
   neptune: {
     name: 'neptune',
     age: 4500,
     type: 'god',
-    lives: function () { return this.sea },
-    brothers: [
-      function () { return this.jupiter },
-      function () { return this.pluto }
-    ]
+    lives: function () { return graphOfGods.sea },
+    brothers: function () { return [graphOfGods.jupiter, graphOfGods.pluto] },
   },
   pluto: {
     name: 'pluto',
     age: 4000,
     type: 'god',
-    lives: function () { return this.tartarus},
-    brothers: [
-      function () { return this.jupiter },
-      function () { return this.neptune }
-    ],
-    pet: function () { return this.cerberus }
+    lives: function () { return graphOfGods.tartarus},
+    brothers: function () { return [graphOfGods.jupiter, graphOfGods.neptune] },
+    pet: function () { return graphOfGods.cerberus }
   },
   alcmene: {
     name: 'alcemene',
@@ -44,22 +35,22 @@ const graphOfGods = {
     name: 'hercules',
     age: 30,
     type: 'demigod',
-    father: function () { return this.jupiter },
-    mother: function () { return this.alcmene },
-    battled: [
+    father: function () { return graphOfGods.jupiter },
+    mother: function () { return graphOfGods.alcmene },
+    battled: function () { return [
       {
-        monster: function () { return this.nemean },
+        monster: graphOfGods.nemean,
         times: 1
       },
       {
-        monster: function () { return this.hydra },
+        monster: graphOfGods.hydra,
         times: 2
       },
       {
-        monster: function () { return this.cerberus },
+        monster: graphOfGods.cerberus,
         times: 12
       }
-    ]
+    ] }
   },
   nemean: {
     name: 'nemean',
@@ -72,22 +63,22 @@ const graphOfGods = {
   cerberus: {
     name: 'cerberus',
     type: 'monster',
-    lives: function () { return this.tartarus }
+    lives: function () { return graphOfGods.tartarus }
   },
   sky: {
     name: 'sky',
     type: 'location',
-    habitants: function () { return [this.jupiter]}
+    habitants: function () { return [graphOfGods.jupiter]}
   },
   sea: {
     name: 'sea',
     type: 'location',
-    habitants: function () { return [this.neptune]}
+    habitants: function () { return [graphOfGods.neptune]}
   },
   tartarus: {
     name: 'tartarus',
     type: 'location',
-    habitants: function () { return [this.cerberus, this.pluto] }
+    habitants: function () { return [graphOfGods.cerberus, graphOfGods.pluto] }
   },
   saturn: {
     name: 'saturn',

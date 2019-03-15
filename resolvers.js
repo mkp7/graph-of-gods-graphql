@@ -15,7 +15,7 @@ const resolvers = {
   },
   Location: {
     habitants: (parent, args, context, info) => {
-      return parent.habitants.bind(graphOfGods)()
+      return parent.habitants()
     }
   },
   Habitant: {
@@ -38,13 +38,13 @@ const resolvers = {
   },
   God: {
     lives: (parent, args, context, info) => {
-      return parent.lives.bind(graphOfGods)()
+      return parent.lives()
     },
     brothers: (parent, args, context, info) => {
-      return parent.brothers.map(bro => bro.bind(graphOfGods)())
+      return parent.brothers()
     },
     pet: (parent, args, context, info) => {
-      return parent.pet.bind(graphOfGods)()
+      return parent.pet()
     }
   },
   DemiGods: {
@@ -52,15 +52,15 @@ const resolvers = {
   },
   DemiGod: {
     father: (parent, args, context, info) => {
-      return parent.father.bind(graphOfGods)()
+      return parent.father()
     },
     battled: (parent, args, context, info) => {
-      return parent.battled && parent.battled.map(bt => ({...bt.monster.bind(graphOfGods)(), ...bt}))
+      return parent.battled && parent.battled()
     }
   },
   Monster: {
     lives: (parent, args, context, info) => {
-      return parent.lives && parent.lives.bind(graphOfGods)()
+      return parent.lives && parent.lives()
     }
   }
 };
