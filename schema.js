@@ -56,8 +56,13 @@ const typeDefs = gql`
   # (A "Mutation" type will be covered later on.)
   type Query {
     gods: Gods
+    allGods: [God]
     demiGods: DemiGods
     locations: Locations
+  }
+
+  type Mutation {
+    addGod(name: String!, age: Int!): God
   }
 `;
 

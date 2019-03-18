@@ -5,8 +5,31 @@ const graphOfGods = require('./graph-of-gods')
 const resolvers = {
   Query: {
     gods: () => graphOfGods,
+    allGods: () => {
+      const gods = []
+      for(v of Object.values(graphOfGods)) {
+        if( v.type === 'god') {
+          gods.push(v)
+        }
+      }
+      console.log(gods)
+
+      return gods
+    },
     demiGods: () => graphOfGods,
     locations: () => graphOfGods
+  },
+  Mutation: {
+    addGod: (_, args, context, info) => {
+      console.log(args)
+      const newGod = {
+        name: args.name,
+        age: args.age,
+        type: 'god'
+      }
+      graphOfGods[args.name] = newGod
+      return newGod
+    }
   },
   Locations: {
     sea: () => graphOfGods.sea,
